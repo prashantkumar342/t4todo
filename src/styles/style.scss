@@ -1,0 +1,874 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  --s: 148px; /* control the size*/
+  --c1: #e0e0e0;
+  --c2: #e6e6e6;
+  --c3: #ffffff;
+
+  --_g: 0 120deg, #0000 0;
+  background: conic-gradient(
+      from 0deg at calc(500% / 6) calc(100% / 3),
+      var(--c3) var(--_g)
+    ),
+    conic-gradient(
+      from -120deg at calc(100% / 6) calc(100% / 3),
+      var(--c2) var(--_g)
+    ),
+    conic-gradient(
+      from 120deg at calc(100% / 3) calc(500% / 6),
+      var(--c1) var(--_g)
+    ),
+    conic-gradient(
+      from 120deg at calc(200% / 3) calc(500% / 6),
+      var(--c1) var(--_g)
+    ),
+    conic-gradient(
+      from -180deg at calc(100% / 3) 50%,
+      var(--c2) 60deg,
+      var(--c1) var(--_g)
+    ),
+    conic-gradient(
+      from 60deg at calc(200% / 3) 50%,
+      var(--c1) 60deg,
+      var(--c3) var(--_g)
+    ),
+    conic-gradient(
+      from -60deg at 50% calc(100% / 3),
+      var(--c1) 120deg,
+      var(--c2) 0 240deg,
+      var(--c3) 0
+    );
+  background-size: calc(var(--s) * 1.732) var(--s);
+}
+::-webkit-scrollbar {
+  height: 8px;
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.loaderWrapper {
+  // border: red solid;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+  .loader {
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+    border: 4px solid #0000;
+    border-radius: 50%;
+    border-right-color: #25b09b;
+    animation: l15 1s infinite linear;
+  }
+  .loader::before,
+  .loader::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 2px;
+    border: inherit;
+    border-radius: 50%;
+    animation: l15 2s infinite;
+  }
+  .loader::after {
+    margin: 8px;
+    animation-duration: 3s;
+  }
+  @keyframes l15 {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+}
+//contentloader
+.contentloaderwrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  /* HTML: <div class="loader"></div> */
+  .loader {
+    width: 60px;
+    aspect-ratio: 2;
+    --_g: no-repeat radial-gradient(circle closest-side, #0c597d 90%, #0000);
+    background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+    background-size: calc(100% / 3) 50%;
+    animation: l3 1s infinite linear;
+  }
+  @keyframes l3 {
+    20% {
+      background-position: 0% 0%, 50% 50%, 100% 50%;
+    }
+    40% {
+      background-position: 0% 100%, 50% 0%, 100% 50%;
+    }
+    60% {
+      background-position: 0% 50%, 50% 100%, 100% 0%;
+    }
+    80% {
+      background-position: 0% 50%, 50% 50%, 100% 100%;
+    }
+  }
+}
+
+.formwrapper {
+  // border: red solid;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  .textStuff {
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 5vh;
+    max-width: 750px;
+    min-height: 94%;
+    margin: auto 0;
+    border-radius: 0 20px 20px 0;
+    -webkit-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.75);
+    .image {
+      max-width: 20vw;
+      img {
+        width: 100%;
+      }
+    }
+    .text {
+      p {
+        font-family: "roboto";
+        text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+        color: #000000;
+        // font-size: 2rem;
+      }
+      .appName {
+        font-size: 55px;
+        font-weight: bold;
+      }
+      .appIntro {
+        margin: 1vh;
+        font-size: 35px;
+        font-weight: 500;
+        font-family: "Montserrat";
+      }
+      .company {
+        font-size: 20px;
+        font-family: "Roboto Mono";
+        font-weight: 400;
+      }
+      .register {
+        font-size: 15px;
+        font-weight: 500;
+        a {
+          button {
+            font-size: 12px;
+            background-color: blue;
+            padding: 3px;
+            border: none;
+            color: white;
+            border-radius: 3px;
+          }
+        }
+      }
+    }
+  }
+  .form {
+    width: 550px;
+    display: flex;
+    margin: 0 0 0 auto;
+    justify-content: center;
+    align-items: center;
+
+    form {
+      backdrop-filter: blur(20px);
+      width: 350px;
+      padding: 30px;
+      height: fit-content;
+      margin: auto;
+      border-radius: 15px;
+      -webkit-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.75);
+      h2 {
+        font-size: 35px;
+        font-family: "Montserrat";
+        margin: 10px 0;
+        text-align: center;
+      }
+      input {
+        width: 100%;
+        outline: none;
+        border: 1px solid black;
+        border-radius: 3px;
+        font-size: 15px;
+        padding: 8px 10px;
+        color: black;
+        font-family: "roboto";
+        margin: 13px 0;
+      }
+      .accSuggestion {
+        font-size: 10px;
+        font-weight: 500;
+        text-align: right;
+        font-family: "roboto";
+      }
+      .submitbtn.register {
+        background-color: rgb(83, 83, 83);
+      }
+      .submitbtn.login {
+        background-color: rgb(0, 140, 255);
+      }
+      .goTo.login {
+        background-color: rgb(0, 140, 255);
+      }
+      .goTo.register {
+        background-color: rgb(83, 83, 83);
+      }
+      button {
+        width: 100%;
+        margin: 10px 0;
+        padding: 8px;
+        border: none;
+        border-radius: 4.5px;
+        color: white;
+      }
+      .horizontal {
+        border: 1px solid black;
+      }
+
+      .err {
+        font-family: "roboto mono";
+        font-size: 10px;
+        font-weight: 500;
+        color: red;
+        text-align: right;
+      }
+      .err.crederr {
+        font-size: 8.5px;
+      }
+    }
+  }
+}
+//todo dashboard
+.dashboardContainer {
+  height: 100%;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: row;
+  .NavMenu {
+    background-color: #00000060;
+    width: 200px;
+    backdrop-filter: blur(20px);
+    height: 100vh;
+    .navClose {
+      padding: 5px 10px;
+      display: none;
+      justify-content: right;
+      button {
+        border: none;
+        background-color: transparent;
+      }
+      p {
+        font-size: 25px;
+        color: rgb(0, 0, 0);
+        .navClose {
+        }
+      }
+    }
+    .links {
+      padding: 10px 0px;
+      width: 100%;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: rgb(49, 96, 178);
+        color: white;
+        cursor: pointer;
+        border: none;
+        font-size: 15px;
+        font-family: "roboto";
+      }
+    }
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    .topPanel {
+      background-color: #ffffff60;
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      backdrop-filter: blur(20px);
+      .menubtn {
+        width: fit-content;
+        display: flex;
+        padding: 0 10px;
+        cursor: pointer;
+        display: none;
+        p {
+          color: rgb(0, 0, 0);
+          font-size: 25px;
+          .fa-bars {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      h2 {
+        font-size: 25px;
+        font-family: "roboto";
+        font-weight: 700;
+        color: rgb(0, 0, 0);
+        padding: 0 0 0 40px;
+      }
+      .profileIcon {
+        margin: 0 0 0 auto;
+        .username {
+          font-family: "roboto";
+          font-size: 15px;
+          color: rgb(0, 0, 0);
+        }
+      }
+    }
+    .cards {
+      width: 100%;
+      height: 100vh;
+      overflow: scroll;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      .card {
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid black;
+        height: fit-content;
+        display: flex;
+        margin: 10px 0;
+        flex-direction: column;
+        transition: all ease 0.3s;
+        background-color: rgb(255, 255, 255);
+        .title {
+          background-color: #9f93939d;
+          border-radius: 5px 5px 0 0;
+          .title-text {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-clamp: 1;
+            word-break: break-word;
+            white-space: nowrap;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            font-size: 16px;
+            font-family: "roboto";
+          }
+        }
+        .descripition {
+          height: fit-content;
+          width: 100%;
+          height: 0;
+          .description-text {
+            display: none;
+            word-break: break-word;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            font-size: 16px;
+            font-family: "roboto";
+          }
+        }
+        .buttons {
+          // margin-top: auto;
+          background-color: rgb(255, 255, 255);
+          padding: 7px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px 15px;
+          justify-content: left;
+          height: fit-content;
+          border-radius: 0 0 5px 5px;
+          button {
+            cursor: pointer;
+            border: none;
+            font-size: 15px;
+            padding: 5px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+          }
+          .fa-chevron-down {
+            transform: rotate(0deg);
+            transition: transform 0.5s;
+          }
+          .closebtn {
+            background-color: rgb(0, 0, 0);
+            display: none;
+            color: white;
+          }
+          .editbtn {
+            background-color: rgb(3, 156, 59);
+            color: white;
+          }
+          .viewbtn {
+            background-color: rgb(8, 119, 119);
+            color: rgb(255, 255, 255);
+          }
+          .deletebtn {
+            background-color: red;
+            color: white;
+          }
+        }
+      }
+      .card.active {
+        transition: all 1s;
+        .title {
+          .title-text {
+            overflow: visible;
+            text-overflow: initial;
+            line-clamp: initial;
+            word-break: break-word;
+            white-space: wrap;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            font-size: 16px;
+            font-family: "roboto";
+          }
+        }
+        .descripition {
+          height: fit-content;
+          .description-text {
+            display: block;
+          }
+        }
+        .buttons {
+          .fa-chevron-down {
+            transform: rotate(180deg);
+            transition: transform 0.5s;
+          }
+          .viewbtn {
+            display: none;
+          }
+          .closebtn {
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+}
+// todo form
+.todoformcontainer {
+  z-index: 999;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffffcf;
+  backdrop-filter: blur(5px);
+  form {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #00000060;
+    input {
+      margin: 10px 0;
+      padding: 5px 10px;
+      font-size: 13px;
+      font-family: "roboto";
+      border: none;
+      border-radius: 4px;
+      outline: none;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      input {
+        width: 48%;
+      }
+      .createbtn {
+        background-color: green;
+        color: white;
+      }
+      .canclebtn {
+        background-color: red;
+        color: white;
+      }
+    }
+    textarea {
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: "roboto";
+      // width: 100px;
+      padding: 5px 10px;
+      min-width: 350px;
+      max-width: 70vw;
+      min-height: 150px;
+      max-height: 60vh;
+      border: none;
+      outline: none;
+    }
+    textarea::placeholder {
+      font-family: monospace;
+    }
+    .err {
+      text-align: center;
+      color: red;
+      font-size: 13px;
+      font-family: monospace;
+      padding: 2px 0;
+    }
+    .formErr {
+      text-align: center;
+      color: red;
+      font-size: 13px;
+      font-family: monospace;
+      padding: 2px 0;
+    }
+  }
+}
+@media screen and (max-width: 1000px) {
+  .formwrapper {
+    flex-direction: column;
+    .textStuff {
+      max-width: 500px;
+      min-height: fit-content;
+      margin: 0 auto;
+      border-radius: 0 0 20px 20px;
+      padding: 4vh 3vw;
+      text-align: center;
+    }
+    .form {
+      width: 500px;
+      display: flex;
+      margin: 4vh auto;
+      border-radius: 15px;
+      form {
+        width: 100%;
+
+        h2 {
+          font-size: 30px;
+        }
+        input {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  .dashboardContainer {
+    .NavMenu {
+      display: none;
+      .navClose {
+        display: flex;
+      }
+    }
+    .NavMenu.active {
+      display: inline;
+      width: 300px;
+      position: fixed;
+      z-index: 99;
+      background-color: #ffffff94;
+    }
+    .content {
+      .topPanel {
+        .menubtn {
+          width: fit-content;
+          display: flex;
+          padding: 0 10px;
+          cursor: pointer;
+          display: inline;
+          p {
+            color: rgb(0, 0, 0);
+            font-size: 25px;
+            .fa-bars {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+        .profileIcon {
+          .username {
+          }
+        }
+      }
+    }
+  }
+  .todoformcontainer {
+    width: 100vw;
+    height: 100vh;
+    form {
+      padding: 25px;
+      input {
+        margin: 10px 0;
+        padding: 5px 10px;
+        font-size: 13px;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        input {
+          width: 48%;
+        }
+      }
+      textarea {
+        font-size: 13px;
+        padding: 5px 10px;
+        min-width: 350px;
+        max-width: 70vw;
+        min-height: 150px;
+        max-height: 60vh;
+      }
+      .err {
+        text-align: center;
+        color: red;
+        font-size: 13px;
+        padding: 2px 0;
+      }
+      .formErr {
+        text-align: center;
+        color: red;
+        font-size: 13px;
+        padding: 2px 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: 550px) {
+  .formwrapper {
+    flex-direction: column;
+    .textStuff {
+      max-width: 370px;
+      min-height: fit-content;
+      margin: 0 auto;
+      text-align: center;
+      .text {
+        .appName {
+          font-size: 40px;
+        }
+        .appIntro {
+          font-size: 20px;
+        }
+        .company {
+          font-size: 15px;
+        }
+        .register {
+          font-size: 12px;
+          button {
+            font-size: 10px;
+          }
+          a {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+    .form {
+      width: 370px;
+      display: flex;
+      margin: 4vh auto;
+      border-radius: 15px;
+      form {
+        width: 100%;
+      }
+    }
+  }
+  .dashboardContainer {
+    .NavMenu {
+      .navClose {
+        p {
+          font-size: 20px;
+        }
+      }
+      .links {
+        button {
+          font-size: 15px;
+        }
+      }
+    }
+    .content {
+      .topPanel {
+        .menubtn {
+          p {
+            font-size: 20px;
+          }
+        }
+        h2 {
+          font-size: 19px;
+          padding: 0 0 0 15px;
+        }
+        .profileIcon {
+          .username {
+            font-size: 10px;
+          }
+        }
+      }
+      .cards {
+        .card {
+          .title {
+            .title-text {
+              font-size: 11px;
+            }
+          }
+          .descripition {
+            .description-text {
+              font-size: 11px;
+            }
+          }
+          .buttons {
+            button {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .todoformcontainer {
+    width: 100vw;
+    height: 100vh;
+    form {
+      padding: 25px;
+      input {
+        margin: 10px 0;
+        padding: 5px 10px;
+        font-size: 13px;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        input {
+          width: 48%;
+        }
+      }
+      textarea {
+        font-size: 12px;
+        padding: 5px 10px;
+        min-width: 300px;
+        max-width: 70vw;
+        min-height: 250px;
+        max-height: 60vh;
+      }
+      .err {
+        font-size: 11px;
+      }
+      .formErr {
+        font-size: 11px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .formwrapper {
+    flex-direction: column;
+    .textStuff {
+      max-width: 320px;
+    }
+    .form {
+      width: 320px;
+      display: flex;
+      margin: 4vh auto;
+      border-radius: 15px;
+      form {
+        width: 100%;
+      }
+    }
+  }
+  .todoformcontainer {
+    width: 100vw;
+    height: 100vh;
+    form {
+      padding: 25px;
+      input {
+        margin: 10px 0;
+        padding: 5px 10px;
+        font-size: 13px;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        input {
+          width: 48%;
+        }
+      }
+      textarea {
+        font-size: 12px;
+        padding: 5px 10px;
+        min-width: 200px;
+        max-width: 70vw;
+        min-height: 250px;
+        max-height: 60vh;
+      }
+      .err {
+        font-size: 11px;
+      }
+      .formErr {
+        font-size: 11px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 350px) {
+  .formwrapper {
+    flex-direction: column;
+    .textStuff {
+      max-width: 280px;
+      .text {
+        .appName {
+          font-size: 40px;
+        }
+        .appIntro {
+          font-size: 20px;
+        }
+        .company {
+          font-size: 15px;
+        }
+        .register {
+          font-size: 12px;
+          button {
+            font-size: 10px;
+          }
+          a {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+    .form {
+      width: 280px;
+      form {
+        width: 100%;
+      }
+    }
+  }
+}
