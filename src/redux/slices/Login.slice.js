@@ -31,7 +31,6 @@ const loginSlice = createSlice({
         state.isLoading = true
       })
       .addCase(sendLoginData.fulfilled, (state, action) => {
-        console.log('data sent')
         state.isLoading = false
         state.resStatus = action.payload
       })

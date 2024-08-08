@@ -83,8 +83,10 @@ function TodoForm() {
                       <input className="createbtn" type="submit" value="Save" />
                       <input type="button" value="cancle" onClick={todoFormDeactivate} className="canclebtn" />
                     </div>
-                    <p className="err">{err}</p>
-                    <p className="formErr">{formErr}</p>
+                    <div className="errwrapper">
+                      <p className="err">{err}</p>
+                      <p className="formErr">{formErr}</p>
+                    </div>
                   </form>
                 </div>
               </>) :
@@ -104,8 +106,11 @@ function TodoForm() {
                       <input className="createbtn" type="submit" value="create" />
                       <input type="button" value="cancle" onClick={todoFormDeactivate} className="canclebtn" />
                     </div>
-                    <p className="err">{err}</p>
-                    <p className="formErr">{formErr}</p>
+                    <div className="errwrapper">
+                      <p className="err">{err}</p>
+                      <p className="formErr">{formErr}</p>
+                    </div>
+
                   </form>
                 </div>
               </>) :

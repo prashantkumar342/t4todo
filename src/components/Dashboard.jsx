@@ -1,25 +1,16 @@
 
-// import { fetchLogout } from "../redux/slices/logout.slice";
 import { useSelector } from "react-redux";
 import FullScreenLoader from "./FullScreenLoader";
 import TodoCard from "./TodoCard";
-// import TodoForm from "./TodoForm";
 import { useContext, useState } from 'react';
 import TodoForm from "./TodoForm";
 import { globarVars } from "./ContextVars";
-// import ContentLoader from "./ContentLoader";
+import { Link } from "react-router-dom";
 function Dashboard() {
-  const { todoFormActive, setTodoFormActive, setTodoEditing } = useContext(globarVars)
+  const { todoFormActive, setTodoFormActive, setTodoEditing, userDetail } = useContext(globarVars)
   const { isLoading } = useSelector((state) => state.logoutSlice)
   const [navMenuClass, setNavMenuClass] = useState(false)
-  // const todosLoading = useSelector((state) => state.fetchTodoSlice.isLoading)
-  // const dispatch = useDispatch();
 
-
-
-  // const logout = () => {
-  //   dispatch(fetchLogout())
-  // }
   const createTodo = () => {
     setTodoFormActive(true)
     setTodoEditing(false)
@@ -35,6 +26,7 @@ function Dashboard() {
 
   return (
     <>
+
       {
         (isLoading) ?
           (<>
@@ -59,7 +51,7 @@ function Dashboard() {
                   <button className="menubtn" onClick={activeNavMenu}><p><i className="fa-solid fa-bars"></i></p></button>
                   <h2>T4Todo <i className="fa-solid fa-clipboard"></i></h2>
                   <div className="profileIcon">
-                    <p className="username"><i className="fa-solid fa-user"></i> prashantKumar</p>
+                    <Link to='/dashboard/profile'><p className="username"><i className="fa-solid fa-user"></i> {userDetail.username}</p></Link>
                   </div>
                 </div>
                 <div className="cards">

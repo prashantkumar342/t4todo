@@ -20,6 +20,8 @@ function TodoCard() {
     }
   }, [dispatch, data, resStatus])
 
+
+
   const deleteTodo = (todoId) => {
     fetch(import.meta.env.VITE_DELETE_TODO, {
       method: "POST",
@@ -55,22 +57,33 @@ function TodoCard() {
   return (
     <>
       {
-        todos.map((item) => (
-          <div className={`card ${(activeCardClass === item._id) ? 'active' : ''}`} key={item._id}>
-            <div className="title">
-              <p className="title-text">{item.title}</p>
+        (resStatus === 200) ?
+          (<>
+            {
+              todos.map((item) => (
+                <div className={`card ${(activeCardClass === item._id) ? 'active' : ''}`} key={item._id}>
+                  <div className="title">
+                    <p className="title-text">{item.title}</p>
+                  </div>
+                  <div className="descripition">
+                    <p className="description-text">{item.description}</p>
+                  </div>
+                  <div className="buttons">
+                    <button className="editbtn" onClick={() => editTodo(item._id, item.title, item.description)}><i className="fa-solid fa-pen-to-square"></i></button>
+                    <button className="viewbtn" onClick={() => viewTodo(item._id)}><i className="fa-solid fa-chevron-down"></i></button>
+                    <button className="closebtn" onClick={() => closeTodo(item._id)}><i className="fa-solid fa-chevron-down"></i></button>
+                    <button className="deletebtn" onClick={() => deleteTodo(item._id)}><i className="fa-solid fa-trash"></i></button>
+                  </div>
+                </div>
+              ))
+            }
+          </>) : (<>
+            <div className="todoListEmpty">
+              <p>Todo list is empty</p>
             </div>
-            <div className="descripition">
-              <p className="description-text">{item.description}</p>
-            </div>
-            <div className="buttons">
-              <button className="editbtn" onClick={() => editTodo(item._id, item.title, item.description)}><i className="fa-solid fa-pen-to-square"></i></button>
-              <button className="viewbtn" onClick={() => viewTodo(item._id)}><i className="fa-solid fa-chevron-down"></i></button>
-              <button className="closebtn" onClick={() => closeTodo(item._id)}><i className="fa-solid fa-chevron-down"></i></button>
-              <button className="deletebtn" onClick={() => deleteTodo(item._id)}><i className="fa-solid fa-trash"></i></button>
-            </div>
-          </div>
-        ))
+
+          </>)
+
       }
 
     </>

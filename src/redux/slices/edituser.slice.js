@@ -1,19 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
-export const saveTodo = createAsyncThunk('saveTodo', async (todoData) => {
-  const response = await fetch(import.meta.env.VITE_NEWTODO, {
-    method: 'POST',
+export const editUser = createAsyncThunk('editUser', async (userData) => {
+  const response = await fetch(import.meta.env.VITE_EDIT_USER, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
     credentials: "include",
-    body: JSON.stringify(todoData)
+    body: JSON.stringify(userData)
   })
   return await response.status;
 })
 
-const sendTodoSlice = createSlice({
-  name: "sendTodoSlice",
+const editUserSlice = createSlice({
+  name: "editUserSlice",
   initialState: {
     isLoading: false,
     resStatus: null
@@ -21,18 +20,18 @@ const sendTodoSlice = createSlice({
   extraReducers: (builder) => {
 
     builder
-      .addCase(saveTodo.pending, (state) => {
+      .addCase(editUser.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(saveTodo.fulfilled, (state, action) => {
+      .addCase(editUser.fulfilled, (state, action) => {
         state.isLoading = false
         state.resStatus = action.payload
       })
-      .addCase(saveTodo.rejected, (state, action) => {
+      .addCase(editUser.rejected, (state, action) => {
         state.isLoading = false,
           state.resStatus = action.payload
       })
   }
 })
 
-export default sendTodoSlice.reducer
+export default editUserSlice.reducer

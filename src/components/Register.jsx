@@ -21,7 +21,6 @@ function Register() {
   const sendData = async (event) => {
     // event.preventDefault()
     event.preventDefault()
-    console.log(userCred)
     if (userCred.email == "" || userCred.password == "" || userCred.username == "") {
       alert('all fields are required')
     } else {

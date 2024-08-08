@@ -5,6 +5,8 @@ import registerReducer from './slices/register.slice'
 import logoutReducer from "./slices/logout.slice";
 import sendTodoReducer from "./slices/sendTodo.slice"
 import fetchTodoReducer from "./slices/todo.slice";
+import editUserReducer from "./slices/edituser.slice";
+import fetchUserReducer from "./slices/fetchuser.slice";
 
 export const reduxStore = configureStore({
   reducer: {
@@ -13,6 +15,8 @@ export const reduxStore = configureStore({
     registerSlice: registerReducer,
     logoutSlice: logoutReducer,
     sendTodoSlice: sendTodoReducer,
-    fetchTodoSlice: fetchTodoReducer
+    fetchTodoSlice: fetchTodoReducer,
+    editUserSlice: editUserReducer,
+    fetchUserSlice: fetchUserReducer
   },
 });

@@ -100,6 +100,7 @@ html {
 //contentloader
 .contentloaderwrapper {
   width: 100%;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -295,8 +296,6 @@ html {
       p {
         font-size: 25px;
         color: rgb(0, 0, 0);
-        .navClose {
-        }
       }
     }
     .links {
@@ -352,6 +351,9 @@ html {
       }
       .profileIcon {
         margin: 0 0 0 auto;
+        a {
+          text-decoration: none;
+        }
         .username {
           font-family: "roboto";
           font-size: 15px;
@@ -366,6 +368,18 @@ html {
       padding: 20px;
       display: flex;
       flex-direction: column;
+      .todoListEmpty {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p {
+          font-size: 25px;
+          font-family: monospace;
+          font-weight: 600;
+        }
+      }
       .card {
         width: 100%;
         border-radius: 5px;
@@ -486,7 +500,7 @@ html {
 }
 // todo form
 .todoformcontainer {
-  z-index: 999;
+  z-index: 99;
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -542,21 +556,257 @@ html {
     textarea::placeholder {
       font-family: monospace;
     }
-    .err {
-      text-align: center;
-      color: red;
-      font-size: 13px;
-      font-family: monospace;
-      padding: 2px 0;
+    p {
+      // width: 60%;
+      line-clamp: 3;
+      padding: 0 20px;
     }
-    .formErr {
-      text-align: center;
-      color: red;
-      font-size: 13px;
-      font-family: monospace;
-      padding: 2px 0;
+    .errwrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .err {
+        width: 60%;
+        text-align: center;
+        color: red;
+        font-size: 13px;
+        font-family: monospace;
+        padding: 2px 0;
+      }
+      .formErr {
+        width: 60%;
+        text-align: center;
+        color: red;
+        font-size: 13px;
+        font-family: monospace;
+        padding: 2px 0;
+      }
     }
   }
+}
+//profile page
+.profilewrapper {
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(20px);
+  .userdetails {
+    padding: 50px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .avtaar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      img {
+        width: 100%;
+        border-radius: 50%;
+        height: 100%;
+      }
+    }
+    .user {
+      width: 100%;
+      text-align: center;
+      .username {
+        font-size: 25px;
+        font-family: "roboto";
+        padding: 10px 5px 5px 5px;
+      }
+      .name {
+        font-size: 20px;
+        font-family: "roboto";
+        font-weight: 500;
+      }
+    }
+    .buttons {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      gap: 10px 20px;
+      button {
+        border: none;
+        font-size: 15px;
+        padding: 5px 10px;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        a {
+          color: white;
+          text-decoration: none;
+        }
+      }
+      .editbtn {
+        background-color: rgb(15, 146, 15);
+      }
+      .logoutbtn {
+        background-color: red;
+      }
+    }
+  }
+}
+//editprofile
+.editdetailswrapper {
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  .toppanel {
+    background-color: rgba(255, 255, 255, 0.676);
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 30px;
+    align-items: center;
+    .logo {
+      font-size: 20px;
+      font-family: "roboto";
+      font-weight: 500;
+    }
+    .more {
+      font-size: 20px;
+      display: none;
+    }
+  }
+  .main {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    .navmenu {
+      background-color: rgba(255, 255, 255, 0.676);
+      padding: 10px;
+      width: 250px;
+      .links {
+        margin: 0 auto;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        button {
+          font-size: 15px;
+          a {
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
+    .settings {
+      width: 100%;
+      // outline: black solid;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      // justify-content: center;
+      .usereditform {
+        form {
+          width: 360px;
+          display: flex;
+          padding: 20px;
+          flex-direction: column;
+          .heading {
+            font-size: 20px;
+            font-family: "roboto";
+            font-weight: 600;
+          }
+          input {
+            margin: 10px 0;
+            font-size: 13px;
+            padding: 8px 5px;
+            border: 1px solid black;
+            outline: none;
+          }
+          .lablePass {
+            font-size: 14px;
+            font-family: "roboto";
+            margin-top: 20px;
+            color: rgb(0, 0, 0);
+            font-weight: 400;
+          }
+        }
+        .buttons {
+          margin: 10px 0;
+          padding: 5px;
+          display: flex;
+          justify-content: space-between;
+          button {
+            border-radius: 0;
+            border: none;
+            width: 50%;
+            font-size: 13px;
+            font-family: "roboto";
+            border: 1px solid rgb(0, 0, 0);
+            padding: 5px 10px;
+            cursor: pointer;
+            a {
+              text-decoration: none;
+              color: black;
+            }
+          }
+          .savebtn {
+            background-color: rgba(0, 0, 255, 0.527);
+            color: white;
+          }
+          .closebtn {
+            background-color: rgba(255, 0, 0, 0.6);
+            a {
+              color: white;
+            }
+          }
+        }
+        .errs {
+          .err {
+            color: red;
+            font-size: 11px;
+            font-family: "roboto";
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+//custom prompt
+.promptWrapper {
+  backdrop-filter: blur(20px);
+  display: flex;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  // display: none;
+  .prompt {
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+    width: 300px;
+    padding: 20px;
+    .messagewrapper {
+      .mainmessage {
+        text-align: right;
+        font-size: 20px;
+        font-family: "Montserrat";
+        font-weight: 500;
+      }
+    }
+
+    .buttons {
+      // outline: red solid;
+      display: flex;
+      margin: 10px 0;
+      justify-content: right;
+      gap: 10px 20px;
+      button {
+        cursor: pointer;
+        font-size: 15px;
+        padding: 5px 10px;
+        border: 1px solid;
+        color: black;
+      }
+    }
+  }
+}
+.promptWrapper.active {
+  display: flex;
 }
 @media screen and (max-width: 1000px) {
   .formwrapper {
@@ -787,6 +1037,62 @@ html {
       }
     }
   }
+  .editdetailswrapper {
+    display: flex;
+    flex-direction: column;
+    .toppanel {
+      padding: 5px 30px;
+      .logo {
+        font-size: 20px;
+      }
+      .more {
+        font-size: 20px;
+        display: inline;
+      }
+    }
+    .main {
+      padding: 0;
+      .navmenu {
+        position: fixed;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.676);
+        padding: 20px 10px;
+        width: 250px;
+        display: none;
+        .links {
+          button {
+            font-size: 13px;
+          }
+        }
+      }
+      .navmenu.active {
+        display: flex;
+      }
+      .settings {
+        padding: 0;
+        .usereditform {
+          padding: 0;
+          form {
+            width: 350px;
+            margin: auto;
+            .heading {
+              font-size: 18px;
+            }
+            input {
+              font-size: 12px;
+            }
+          }
+          .buttons {
+            margin: 10px 0;
+            padding: 5px;
+            button {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 @media screen and (max-width: 400px) {
   .formwrapper {
@@ -834,6 +1140,41 @@ html {
       }
       .formErr {
         font-size: 11px;
+      }
+    }
+  }
+  .editdetailswrapper {
+    .main {
+      .navmenu {
+        background-color: rgba(255, 255, 255, 0.676);
+        padding: 10px;
+        width: 250px;
+        .links {
+          button {
+            font-size: 13px;
+          }
+        }
+      }
+      .settings {
+        .usereditform {
+          form {
+            width: 270px;
+            margin: auto;
+            .heading {
+              font-size: 18px;
+            }
+            input {
+              font-size: 12px;
+            }
+          }
+          .buttons {
+            margin: 10px 0;
+            padding: 5px;
+            button {
+              font-size: 12px;
+            }
+          }
+        }
       }
     }
   }
